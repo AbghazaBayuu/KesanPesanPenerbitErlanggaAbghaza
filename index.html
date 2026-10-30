@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refleksi Magang - Abghaza Bayu</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS and Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+              quicksand: ["Quicksand", "sans-serif"],
+            },
+            colors: {
+              pastel: {
+                bg: "#FFFBF5", // Soft cream
+                card: "#FFFFFF",
+                pink: "#FDE2E4", // Blush pink
+                pinkHover: "#FBC3BC",
+                blue: "#E2ECE9", // Soft blue
+                text: "#5c4d4d", // Soft brown/gray for text
+                accent: "#FFB5A7", // Deep pastel accent
+              },
+            },
+            boxShadow: {
+              soft: "0 10px 40px -10px rgba(255, 181, 167, 0.3)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #fffbf5;
+        background-image: radial-gradient(#fde2e4 1px, transparent 1px);
+        background-size: 30px 30px;
+        color: #5c4d4d;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.4s ease-in-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Custom Scrollbar for aesthetic */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fffbf5;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #fde2e4;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #fbc3bc;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center p-4 font-quicksand selection:bg-pastel-pink selection:text-pastel-text"
+  >
+    <main
+      class="max-w-4xl w-full bg-pastel-card rounded-[40px] shadow-soft p-8 md:p-12 transition-all duration-300 relative overflow-hidden"
+    >
+      <!-- Decorative blobs -->
+      <div
+        class="absolute -top-10 -left-10 w-32 h-32 bg-pastel-pink rounded-full mix-blend-multiply filter blur-xl opacity-70"
+      ></div>
+      <div
+        class="absolute -bottom-10 -right-10 w-32 h-32 bg-pastel-blue rounded-full mix-blend-multiply filter blur-xl opacity-70"
+      ></div>
+
+      <!-- Header -->
+      <header class="text-center mb-10 relative z-10">
+        <div
+          class="inline-block bg-pastel-blue px-4 py-1 rounded-full text-sm font-bold text-teal-700 mb-4 tracking-wide uppercase shadow-sm"
+        >
+          🎓 Intern Reflection
+        </div>
+        <h1
+          class="text-3xl md:text-4xl font-poppins font-bold leading-tight text-gray-800"
+        >
+          Refleksi Magang <span class="text-pastel-accent">Abghaza Bayu</span>
+        </h1>
+        <p class="text-lg font-medium text-gray-500 mt-2 font-poppins">
+          Selama Magang di PT Penerbit Erlangga (Divisi Marcomm)
+        </p>
+      </header>
+
+      <!-- Navigation Buttons -->
+      <nav class="flex flex-wrap justify-center gap-3 mb-8 relative z-10">
+        <button
+          onclick="changeContent('kesan')"
+          id="btn-kesan"
+          class="nav-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 transform hover:scale-105 active:scale-95 bg-pastel-pink text-gray-700 shadow-md"
+        >
+          ✨ Kesan
+        </button>
+        <button
+          onclick="changeContent('pesan')"
+          id="btn-pesan"
+          class="nav-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 transform hover:scale-105 active:scale-95 bg-gray-50 text-gray-500 hover:bg-pastel-pink/50"
+        >
+          💌 Pesan
+        </button>
+        <button
+          onclick="changeContent('dipertahankan')"
+          id="btn-dipertahankan"
+          class="nav-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 transform hover:scale-105 active:scale-95 bg-gray-50 text-gray-500 hover:bg-pastel-pink/50"
+        >
+          💪 Hal yang Dipertahankan
+        </button>
+        <button
+          onclick="changeContent('saran')"
+          id="btn-saran"
+          class="nav-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 transform hover:scale-105 active:scale-95 bg-gray-50 text-gray-500 hover:bg-pastel-pink/50"
+        >
+          💡 Saran & Perbaikan
+        </button>
+      </nav>
+
+      <!-- Content Area -->
+      <section
+        class="bg-[#faf9f7] rounded-3xl p-6 md:p-8 border border-pastel-pink/30 shadow-inner relative z-10 min-h-[250px] flex items-center justify-center"
+      >
+        <div
+          id="content-display"
+          class="text-base md:text-lg leading-relaxed text-gray-700 text-center md:text-left w-full fade-in"
+        >
+          <!-- Content will be injected here via JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Data content
+      const data = {
+        kesan: `Menjalani masa magang di Divisi Marcomm bener-bener jadi pengalaman yang seru dan berkesan banget buat saya. Lingkungan kerjanya asik dan orang-orangnya sangat humble. Saya ngerasa dirangkul layaknya adek sendiri, dinaungi, dan dibimbing dengan sabar. Khususnya untuk pembimbing lapangan saya, <b>Mba Puteri</b>, yang ternyata punya <i>coping mechanism</i> unik kalau lagi pusing kerjaan suka nyeletuk <i>"adu kacong"</i>—lucunya, sifat ini persis banget sama saya yang juga suka ngomong sendiri kalau lagi stres! 😆 <br><br>Selain itu, saya juga salut banget sama <b>Mas Kharis</b> yang selalu cakap dan cepat tanggap. Beliau punya kebiasaan keren yaitu selalu mencatat <i>in-track</i> semua tugas di bukunya, jadi nggak ada satupun kerjaan yang terlewat. 📝 <br><br>Ada juga momen yang bakal bikin kangen, yaitu waktu saya ditugasin untuk menjawab soal-soal try out SD dan SMP. Selain bikin nostalgia ke masa sekolah dulu, hitung-hitung tugas ini juga bantu melatih otak saya buat ngerjain psikotes perusahaan nanti, jadi saya bersyukur banget. 🧠 Terus, karena di kantor banyak banget koleksi buku yang menarik, waktu luang atau pas lagi ditinggal selalu saya manfaatin buat baca-baca buku di sana. 📚`,
+
+        pesan: `Terima kasih banyak untuk Mba Puteri, Mas Kharis, dan seluruh tim Marcomm atas semua ilmu, bimbingan, dan keseruannya selama beberapa bulan ini! 🥺 <br><br>Pesan dari saya, tetap jaga kekompakan dan vibes kerja yang asik dan kekeluargaan ini, karena itu yang bikin anak magang betah dan nyaman belajar di sini. Semoga sukses terus untuk tim Marcomm, selalu sehat, dan dilancarkan semua project-nya ke depan. Jangan lupain saya ya, semoga kita bisa ketemu lagi di kesempatan yang lebih baik! 🚀`,
+
+        dipertahankan: `Satu hal yang menurut saya sudah sangat bagus dan harus terus dipertahankan adalah sikap proaktif tim Marcomm dalam memenuhi kebutuhan pelanggan maupun divisi marketing. 🤝 <br><br>Komunikasi dan inisiatif yang cepat ini bikin koordinasi jadi sangat lancar, penjualan terbantu, dan target divisi jadi lebih mudah tercapai. Pertahankan kerja hebat ini! 🔥`,
+
+        saran: `Karena basis background saya dari statistika dan terbiasa mengolah data, saya melihat ada ruang untuk efisiensi di bagian administrasi, khususnya pada proses QC buku. 📊 <br><br>Di era digitalisasi ini, alangkah baiknya jika proses tersebut dibuatkan semacam sistem pelacakan berbasis web atau database yang terintegrasi. 💻 Tujuannya agar seluruh progres bisa di-track secara real-time dan bersama-sama, sehingga bisa mengurangi praktik surat-menyurat fisik yang cukup boros kertas (go green! 🌱). <br><br>Selain meminimalisir kesalahan penulisan, sistem digital ini akan memungkinkan Erlangga Pusat untuk langsung melihat laporan secara langsung tanpa harus menunggu pengiriman surat fisik yang kadang bisa sedikit menghambat produktivitas kerja.`,
+      };
+
+      // Function to change content and update active button
+      function changeContent(section) {
+        const contentDisplay = document.getElementById("content-display");
+        const buttons = document.querySelectorAll(".nav-btn");
+
+        // 1. Update Content with animation reset
+        contentDisplay.classList.remove("fade-in");
+        // trigger reflow to restart animation
+        void contentDisplay.offsetWidth;
+        contentDisplay.innerHTML = data[section];
+        contentDisplay.classList.add("fade-in");
+
+        // 2. Update Button Styles
+        buttons.forEach((btn) => {
+          // Reset to inactive styles
+          btn.className =
+            "nav-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 transform hover:scale-105 active:scale-95 bg-gray-50 text-gray-500 hover:bg-pastel-pink/50";
+        });
+
+        // Set active style for clicked button
+        const activeBtn = document.getElementById(`btn-${section}`);
+        activeBtn.className =
+          "nav-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 transform hover:scale-105 active:scale-95 bg-pastel-pink text-gray-700 shadow-md";
+      }
+
+      // Initialize default content on load
+      window.onload = () => {
+        changeContent("kesan");
+      };
+    </script>
+  </body>
+</html>
